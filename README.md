@@ -19,44 +19,28 @@ Currently benchmarking startup times to `--help` command output for:
 python startup_time.py -s 100
 ```
 
-```json
-[
-    {
-        "name": "docopt-cli",
-        "stats": {
-            "count": 100,
-            "mean": 0.020550777912139894,
-            "median": 0.019954800605773926,
-            "std": 0.0015330532016668696
-        }
-    },
-    {
-        "name": "argparse-cli",
-        "stats": {
-            "count": 100,
-            "mean": 0.024127743244171142,
-            "median": 0.023677945137023926,
-            "std": 0.0014341973597934352
-        }
-    },
-    {
-        "name": "click-cli",
-        "stats": {
-            "count": 100,
-            "mean": 0.04092825412750244,
-            "median": 0.0405193567276001,
-            "std": 0.0028114824239288943
-        }
-    },
-    {
-        "name": "typer-cli",
-        "stats": {
-            "count": 100,
-            "mean": 0.053807063102722166,
-            "median": 0.05288064479827881,
-            "std": 0.003146052977225996
-        }
-    }
-]
+Alternativey, pipe through `csvkit` utils for pretty printing:
+```bash
+$ python startup_time.py -s 100 | in2csv -f json | csvlook
 ```
 
+## Results
+### WSL2
+```bash
+| name         | stats/count | stats/mean | stats/median | stats/std |
+| ------------ | ----------- | ---------- | ------------ | --------- |
+| docopt-cli   |         100 |     0.105… |       0.103… |    0.010… |
+| argparse-cli |         100 |     0.122… |       0.120… |    0.010… |
+| click-cli    |         100 |     0.176… |       0.169… |    0.040… |
+| typer-cli    |         100 |     0.440… |       0.414… |    0.077… |
+```
+
+### Windows
+```bash
+| name         | stats/count | stats/mean | stats/median | stats/std |
+| ------------ | ----------- | ---------- | ------------ | --------- |
+| docopt-cli   |         100 |     0.105… |       0.103… |    0.010… |
+| argparse-cli |         100 |     0.122… |       0.120… |    0.010… |
+| click-cli    |         100 |     0.176… |       0.169… |    0.040… |
+| typer-cli    |         100 |     0.440… |       0.414… |    0.077… |
+```
