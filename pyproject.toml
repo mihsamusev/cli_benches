@@ -9,8 +9,12 @@ requires-python = ">=3.11"
 readme = "README.md"
 
 dependencies = [
-    "pandas==2.1.*",
+    "click",
+    "typer",
+    "fire",
+    "docopt"
 ]
+
 
 [project.optional-dependencies]
 dev = [
@@ -25,6 +29,13 @@ dev = [
     "gitpython",
     "pytest-xdist"
 ]
+
+[project.scripts]
+argparse-cli = "cli_benches.argparse_cli:cli"
+typer-cli = "cli_benches.typer_cli:cli"
+click-cli = "cli_benches.click_cli:cli"
+fire-cli = "cli_benches.fire_cli:cli"
+docopt-cli = "cli_benches.docopt_cli:cli"
 
 [build-system]
 requires = ["setuptools", "wheel"]
